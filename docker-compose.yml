@@ -1,0 +1,17 @@
+services:
+  spellbook:
+    build: .
+    container_name: spellbook
+    ports:
+      - "81:3000"
+    volumes:
+      - .:/docs
+    environment:
+      - NODE_ENV=development
+    restart: unless-stopped
+    networks:
+      - spellbook-network
+
+networks:
+  spellbook-network:
+    driver: bridge
