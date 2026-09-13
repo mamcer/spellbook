@@ -982,3 +982,24 @@ lsof -ti :5000 | xargs kill
 # if you don't want to wait
 lsof -ti :5000 | xargs kill -9
 ```
+
+## age
+
+Para generar el archivo con clave:
+
+```bash
+sudo apt install age
+
+tar -czf - /home/mario/directory-to-compress | age -p -o directory-to-compress-$(date +%Y%m%d).tar.gz.age
+```
+
+> -p = modo passphrase (te la pide dos veces al crear el archivo, no hace falta generar ni cuidar un archivo de clave).
+> El pipe (tar ... | age ...) es la parte importante: nunca se escribe un .tar.gz en texto plano en el disco, ni por un instante — va directo de tar a age cifrado.
+
+Para restaurar:
+
+```bash
+age -d directory-to-compress-20260912.tar.gz.age | tar -xzf -
+```
+
+> Te pide la passphrase y descomprime directo.
