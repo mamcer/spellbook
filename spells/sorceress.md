@@ -1,44 +1,46 @@
 # sorceress
 
-## performance 
+## performance
 
-listar servicios
+list enabled services
 
 ```bash
 systemctl list-unit-files --type=service --state=enabled
 ```
 
-impresora
+printer
 
 ```bash
-sudo systemctl disable cups.service
-sudo systemctl disable cups-browsed.service
+sudo systemctl disable --now cups.service
+sudo systemctl disable --now cups-browsed.service
 ```
 
 modem
 
 ```bash
-sudo systemctl disable ModemManager.service
-sudo systemctl stop ModemManager.service
+sudo systemctl disable --now ModemManager.service
 ```
 
-reducir uso de ram
+reduce memory pressure
+
+Debian 13 no longer reads `/etc/sysctl.conf` at boot; use a drop-in under `/etc/sysctl.d/`.
 
 ```bash
-sudo vim /etc/sysctl.conf
+sudo vim /etc/sysctl.d/99-sorceress.conf
 ```
 
 add
 
 ```conf
-vm.swappiness=10
+# high swappiness: swap goes to zram (compressed RAM), not to disk
+vm.swappiness=100
 vm.vfs_cache_pressure=50
 ```
 
 apply
 
 ```bash
-sudo sysctl -p
+sudo sysctl --system
 ```
 
 clean system
@@ -55,11 +57,6 @@ export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 export GOBIN=$HOME/.local/bin
 export PATH=$PATH:$GOBIN
-
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
 ```
 
 ## caja
@@ -104,7 +101,7 @@ space play/pause
 , frame by frame backward
 [/] decrease increase playback speed
 backspace reset speed to normal
-f toogle full screen
+f toggle full screen
 0 show progress bar
 ```
 
@@ -116,10 +113,9 @@ yt-dlp -f "bestvideo[height<=1080]+bestaudio/best[height<=1080]" -o - "URL_DEL_V
 ## bluetooth
 
 ```bash
-sudo systemctl enable bluetooth
-sudo systemctl start bluetooth
-systemctl status bluetooth
 sudo apt install bluez bluetooth rfkill blueman
+sudo systemctl enable --now bluetooth
+systemctl status bluetooth
 ```
 
 ## ncspot
@@ -150,9 +146,11 @@ volnorm = false
 
 ### cheat sheet
 
+```
 o open playlist
 backspace go back
 q add to queue
+```
 
 
 ## zram-tools
@@ -177,11 +175,10 @@ PRIORITY=100
 sudo systemctl restart zramswap
 ```
 
+verify (ALGORITHM should show `lz4`)
+
 ```bash
 zramctl
-
-NAME       ALGORITHM DISKSIZE DATA COMPR TOTAL STREAMS MOUNTPOINT
-/dev/zram0 zstd          2.2G   4K   59B   20K       4 [SWAP]
 ```
 
 ## minimize logs
@@ -198,17 +195,9 @@ sudo systemctl restart systemd-journald
 
 ## tmux
 
-
 ```bash
 sudo apt update
 sudo apt install tmux
-```
-
-detach session
-
-```
-
-tmux attach
 ```
 
 ```bash
@@ -265,17 +254,17 @@ vim ~/.config/alacritty/alacritty.toml
 
 ```
 [window]
-# Margen interno para que el texto no toque los bordes
+# inner padding so text doesn't touch the edges
 padding = { x = 10, y = 10 }
 startup_mode = "Fullscreen"
 decorations = "None"
 opacity = 0.95
 
 [font]
-# Usamos JetBrains Mono, que es excelente para leer código
+# JetBrains Mono, very readable for code
 normal = { family = "JetBrains Mono", style = "Regular" }
 bold = { family = "JetBrains Mono", style = "Bold" }
-size = 13.0 # Ajusta según tu vista, 11 es ideal para pantallas de 11-13"
+size = 13.0 # adjust to taste
 
 [colors.primary]
 background = "#1e1f29"
@@ -302,11 +291,11 @@ cyan    = "#a4ffff"
 white   = "#ffffff"
 
 [cursor]
-# Cursor tipo bloque que parpadea
+# blinking block cursor
 style = { shape = "Block", blinking = "On" }
 
 [terminal.shell]
-# Forzamos que use Bash (o Zsh si lo instalas luego)
+# force bash
 program = "/bin/bash"
 ```
 
@@ -329,11 +318,11 @@ max_heap_table_size = 32M
 
 ```bash
 sudo mysql_secure_installation
-```bash
+```
 
 ```bash
 sudo mariadb
-CREATE USER 'mario'@'localhost' IDENTIFIED BY 'dev';
+CREATE USER 'mario'@'localhost' IDENTIFIED VIA unix_socket;
 GRANT ALL PRIVILEGES ON *.* TO 'mario'@'localhost';
 FLUSH PRIVILEGES;
 ```
@@ -349,7 +338,7 @@ user settings
 ```json
 {
   // =========================
-  // UI MINIMALISTA
+  // MINIMAL UI
   // =========================
   "window.zoomLevel": 1.7,
   "workbench.colorTheme": "Shades of Purple",
