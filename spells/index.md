@@ -6,6 +6,7 @@
 [docker](docker.md)  
 [docsify](docsify.md)  
 [dotnet](dotnet.md)  
+[etc](etc.md)  
 [ffmpeg](ffmpeg.md)  
 [gemini](gemini.md)  
 [git](git.md)  
@@ -33,4 +34,5 @@
 [tmux](tmux.md)  
 [troubleshooting](troubleshooting.md)  
 [vim](vim.md)  
+[watts-flow](watts-flow.md)  
 [yt-dlp](yt-dlp.md)  

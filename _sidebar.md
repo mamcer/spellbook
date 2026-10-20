@@ -7,6 +7,7 @@
   - [docker](spells/docker.md)
   - [docsify](spells/docsify.md)
   - [dotnet](spells/dotnet.md)
+  - [etc](spells/etc.md)
   - [ffmpeg](spells/ffmpeg.md)
   - [gemini](spells/gemini.md)
   - [git](spells/git.md)
@@ -34,4 +35,5 @@
   - [tmux](spells/tmux.md)
   - [troubleshooting](spells/troubleshooting.md)
   - [vim](spells/vim.md)
+  - [watts-flow](spells/watts-flow.md)
   - [yt-dlp](spells/yt-dlp.md)
