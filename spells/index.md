@@ -20,6 +20,7 @@
 [mplayer](mplayer.md)  
 [mycli](mycli.md)  
 [mysql](mysql.md)  
+[navidrome](navidrome.md)  
 [neovim](neovim.md)  
 [new-linux](new-linux.md)  
 [nginx](nginx.md)  

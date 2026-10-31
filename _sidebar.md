@@ -21,6 +21,7 @@
   - [mplayer](spells/mplayer.md)
   - [mycli](spells/mycli.md)
   - [mysql](spells/mysql.md)
+  - [navidrome](spells/navidrome.md)
   - [neovim](spells/neovim.md)
   - [new-linux](spells/new-linux.md)
   - [nginx](spells/nginx.md)
