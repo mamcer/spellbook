@@ -154,5 +154,9 @@ Players) or a client asks for it.
   It can't edit tags, by design.
 - Songs -> "Shuffle All" queues 500 random songs, not the whole library.
   Press it again for a new batch.
+- macOS 15+: `curl` reaches `http://<server-ip>:4533` but Chrome and
+  Firefox time out. Each app needs the Local Network permission:
+  System Settings -> Privacy & Security -> Local Network -> enable the
+  browser, then quit it (Cmd+Q) and reopen.
 - smart playlists (`.nsp`) are files inside the music folder, so they
   don't work with a read-only library.
