@@ -158,5 +158,11 @@ Players) or a client asks for it.
   Firefox time out. Each app needs the Local Network permission:
   System Settings -> Privacy & Security -> Local Network -> enable the
   browser, then quit it (Cmd+Q) and reopen.
+- Android: the phone's browser loads the server but the app fails with
+  `java.net.ConnectException: failed to connect to /<server-ip>:4533`
+  (and nothing shows up in the Navidrome logs). It's the app's network
+  permissions (Settings -> Apps -> <app>: Wi-Fi allowed, nearby
+  devices / local network). "Legacy login" and "accept self-signed
+  certificates" don't help: the connection fails before auth and TLS.
 - smart playlists (`.nsp`) are files inside the music folder, so they
   don't work with a read-only library.
