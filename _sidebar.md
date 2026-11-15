@@ -14,6 +14,7 @@
   - [go](spells/go.md)
   - [grafana](spells/grafana.md)
   - [jenkins](spells/jenkins.md)
+  - [kubectl](spells/kubectl.md)
   - [linux-server](spells/linux-server.md)
   - [mail](spells/mail.md)
   - [mariadb](spells/mariadb.md)

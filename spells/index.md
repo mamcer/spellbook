@@ -13,6 +13,7 @@
 [go](go.md)  
 [grafana](grafana.md)  
 [jenkins](jenkins.md)  
+[kubectl](kubectl.md)  
 [linux-server](linux-server.md)  
 [mail](mail.md)  
 [mariadb](mariadb.md)  
